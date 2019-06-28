@@ -1,0 +1,19 @@
+.input_race{
+    width: 95%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.quote_typed {
+    background-color: green;
+}
+
+.quote_typed_wrong {
+    background-color: red;
+}
+
+.status_bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
