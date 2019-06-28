@@ -3,7 +3,8 @@ import moment from 'moment';
 import classes from './Typerace.module.css';
 
 const defaultValues = {
-    countdown: 105
+    countdown: 10,
+    countdownRace: 100
 };
 
 class TypeRace extends Component {
@@ -40,7 +41,7 @@ class TypeRace extends Component {
         const { quote } = this.props
         
         const {
-            quoteTyped, wrongChars, wordcount, countdown
+            quoteTyped, wrongChars, wordcount, countdownRace
         } =  this.state;
 
         const char = String.fromCharCode(e.charCode);
@@ -68,7 +69,7 @@ class TypeRace extends Component {
         } else {
             this.setState({
                 quoteTyped: `${quoteTyped}${char}`,
-                wpm: Math.round(wordcount / ( countdown / 60))
+                wpm: Math.round(wordcount / ( countdownRace / 60))
             });
         }
 
@@ -94,8 +95,12 @@ class TypeRace extends Component {
     }
 
     _status() {
-        const { countdown, wpm } = this.state;
-        const timer = moment.utc(countdown * 1000 ).format('hh:mm:ss');
+        const { countdown, countdownRace, wpm } = this.state;
+        const timer = moment.utc(countdownRace * 1000 ).format('hh:mm:ss');
+
+        if(countdown > 0) {
+            return <span />
+        }
 
         return (
             <h4 className={classes.status_bar}>
